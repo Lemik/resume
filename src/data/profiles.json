@@ -1,0 +1,22 @@
+[
+	{
+		"label": "Email",
+		"href": "mailto:leonid.dushin@gmail.com",
+		"hint": "leonid.dushin@gmail.com"
+	},
+	{
+		"label": "LinkedIn",
+		"href": "https://www.linkedin.com/in/leonid-dushin/",
+		"hint": "linkedin.com/in/leonid-dushin"
+	},
+	{
+		"label": "GitHub",
+		"href": "https://github.com/Lemik",
+		"hint": "github.com/Lemik"
+	},
+	{
+		"label": "YouTube",
+		"href": "https://www.youtube.com/@Run_Leo_Run",
+		"hint": "@Run_Leo_Run"
+	}
+]

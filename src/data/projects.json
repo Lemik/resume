@@ -1,0 +1,30 @@
+[
+	{
+		"title": "Data archiving & compliance messaging",
+		"employer": "GlobalRelay",
+		"description": "Secure, compliant messaging, archiving, and information governance for financial services — capture and analysis of email, instant messaging, social media, and voice. Lead SDET work on framework quality, strategy, hiring, and shift-left test design.",
+		"tech": ["Playwright", "WebDriverIO", "JavaScript", "Jenkins", "Jira", "TestRail", "Uptrends"],
+		"links": [{ "label": "GlobalRelay", "href": "https://www.globalrelay.com" }]
+	},
+	{
+		"title": "Smart grid & metering (BPL)",
+		"employer": "Corinex",
+		"description": "Smart metering and broadband-over-powerline communication for utilities. Led QA automation, team building, standards, client-facing acceptance testing, and delivery of a client-approved acceptance framework.",
+		"tech": ["Python", "Robot Framework", "Selenium", "AWS", "JavaScript", "Jenkins"],
+		"links": [{ "label": "Corinex", "href": "https://www.corinex.com" }]
+	},
+	{
+		"title": "Customer engagement platform",
+		"employer": "Vision Critical (now Alida)",
+		"description": "Cloud customer intelligence platform for continuous feedback across the enterprise. Built cross-team UI automation, regression coverage, and API/mobile testing in a .NET / Selenium / SpecFlow / AWS stack.",
+		"tech": ["C#", ".NET", "Selenium", "AWS", "JavaScript", "SpecFlow"],
+		"links": [{ "label": "Alida", "href": "https://www.alida.com" }]
+	},
+	{
+		"title": "OAuth 2.0 authorization & booking SOA",
+		"employer": "DataArt",
+		"description": "High-load REST authorization server (OAuth 2.0) securing HTTP communication across SOAP and REST services for an international booking platform. Framework work and API automation at scale.",
+		"tech": ["Java", "Eclipse", "Jira", "Cucumber"],
+		"links": [{ "label": "DataArt", "href": "https://www.dataart.com" }]
+	}
+]

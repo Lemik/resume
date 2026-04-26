@@ -1,0 +1,112 @@
+{
+	"name": "Leonid Dushin",
+	"headline": "Lead / Senior QA Automation Engineer",
+	"tagline": "15+ years in IT — UI and API automation, performance testing, leadership, and production troubleshooting.",
+	"summary": "Senior QA automation engineer with broad experience in UI automation, API and integration testing, performance work, and team leadership. Comfortable across JavaScript, C#, Java, and Python, with cloud and relational databases. I troubleshoot production issues, find performance bottlenecks, recruit and lead SDET/QA teams, and build frameworks that catch defects early in the SDLC.",
+	"skills": [
+		"JavaScript / TypeScript",
+		"C# / .NET",
+		"Java",
+		"Python",
+		"Selenium WebDriver",
+		"WebDriverIO",
+		"Playwright",
+		"Puppeteer",
+		"Robot Framework",
+		"REST / API testing",
+		"Cucumber / SpecFlow / BDD",
+		"JMeter / load testing",
+		"ELK / Kibana",
+		"New Relic / Dynatrace",
+		"Grafana",
+		"Oracle / MS SQL / MongoDB / PostgreSQL",
+		"AWS",
+		"Jenkins / CI/CD",
+		"Agile / Scrum / TDD / BDD",
+		"Android & React (hands-on)"
+	],
+	"education": [
+		"MS, Information Technology — Kharkiv National University (Faculty of Mathematics and Mechanical Engineering), Kharkiv, Ukraine",
+		"BS, Information Technology — Kharkiv National University (Faculty of Mathematics and Mechanical Engineering), Kharkiv, Ukraine",
+		"Certificate, Business Venture Program — British Columbia Institute of Technology, Vancouver, Canada"
+	],
+	"certifications": ["ISTQB® Certified Tester Foundation Level (2023)"],
+	"positions": [
+		{
+			"company": "GlobalRelay",
+			"companyUrl": "https://www.globalrelay.com",
+			"role": "Lead SDET",
+			"period": "2022 — present",
+			"location": "Vancouver, Canada",
+			"highlights": [
+				"Secure, compliant messaging, archiving, and information governance for financial services — capture, preservation, and analysis of email, IM, social, and voice communications.",
+				"Stack: Playwright, WebDriverIO, JavaScript, Jenkins, Jira, TestRail, Uptrends.",
+				"Lead SDET: evolved automation framework, cut flaky tests, improved coverage, performance assessments, hiring, testing strategy and standards, cross-team alignment, code reviews, documentation, mentorship.",
+				"Shift-left: reduced reliance on heavy E2E in favor of component tests and lower-level integration tests with mocks — more defects found before integration with other modules and less dependency on a perfectly stable environment."
+			]
+		},
+		{
+			"company": "Corinex",
+			"companyUrl": "https://www.corinex.com",
+			"role": "Lead QA Automation Engineer (from Senior QA Automation Engineer, 2020)",
+			"period": "2020 — 2022",
+			"location": "Vancouver, Canada",
+			"highlights": [
+				"Smart metering and broadband-over-powerline (BPL) infrastructure for utilities.",
+				"Stack: Python, Robot Framework, Selenium, AWS, JavaScript, Jenkins.",
+				"Built and led the QA automation function: interviews, training, KPIs, reviews, standards, client communication, on-site acceptance testing.",
+				"Led a team of three SDETs; delivered a functional framework approved by the client for acceptance testing."
+			]
+		},
+		{
+			"company": "Vision Critical",
+			"companyUrl": "https://www.alida.com",
+			"role": "Performance Engineer",
+			"period": "2016 — 2019",
+			"location": "Vancouver, Canada",
+			"highlights": [
+				"Performance investigation across front end, back end, and database optimization.",
+				"Tools: WebPageTest, Kibana, Grafana, vSphere among others."
+			]
+		},
+		{
+			"company": "Vision Critical",
+			"companyUrl": "https://www.alida.com",
+			"role": "Software Engineer in Testing",
+			"period": "2013 — 2016",
+			"location": "Vancouver, Canada",
+			"highlights": [
+				"Cloud customer intelligence / engagement platform — C# .NET, Selenium, AWS, JavaScript, SpecFlow.",
+				"Manual and automated testing; built a cross-team UI automation framework and regression scripts; API and mobile testing.",
+				"Delivered a framework still in use for regression testing."
+			]
+		},
+		{
+			"company": "EPAM Systems",
+			"companyUrl": "https://www.epam.com",
+			"role": "Senior QA Automation Engineer",
+			"period": "2013",
+			"location": "Ukraine",
+			"highlights": ["Senior test automation on client delivery projects."]
+		},
+		{
+			"company": "DataArt Solutions",
+			"companyUrl": "https://www.dataart.com",
+			"role": "Senior QA Automation Engineer",
+			"period": "2010 — 2013",
+			"location": "Ukraine",
+			"highlights": [
+				"High-load OAuth 2.0 REST authorization service securing internal HTTP traffic for an international SOA booking platform.",
+				"Java, Eclipse, Jira, Cucumber — maintained and extended automation framework; built new framework and API automation.",
+				"Achieved roughly 80% regression coverage with automated API tests."
+			]
+		},
+		{
+			"company": "BCPWA society",
+			"role": "Software Developer / QA Engineer",
+			"period": "2008 — 2009",
+			"location": "Vancouver, Canada",
+			"highlights": ["Software development and quality assurance for a non-profit organization."]
+		}
+	]
+}

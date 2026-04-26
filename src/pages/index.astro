@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import experience from '../data/experience.json';
+import profiles from '../data/profiles.json';
+import talks from '../data/talks.json';
+import { getCollection } from 'astro:content';
+import { withBase } from '../utils/url';
+
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
+
+const talkTeasers = talks.slice(0, 2);
+
+const pageTitle = `${experience.name} — ${experience.headline}`;
+
+type ExperienceData = typeof experience & {
+	education?: string[];
+	certifications?: string[];
+};
+
+const ex = experience as ExperienceData;
+const education = ex.education ?? [];
+const certifications = ex.certifications ?? [];
+---
+
+<BaseLayout title={pageTitle} description={experience.summary} navKey="home">
+	<section class="hero">
+		<h1>{experience.headline}</h1>
+		<p class="tagline">{experience.tagline}</p>
+		<p class="lede">{experience.summary}</p>
+		<div class="profiles" aria-label="Contact and profiles">
+			{
+				profiles.map((p) => (
+					<a
+						href={p.href}
+						target={p.href.startsWith('mailto:') ? undefined : '_blank'}
+						rel={p.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+						title={'hint' in p && p.hint ? p.hint : undefined}
+					>
+						{p.label}
+					</a>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="skills-heading">
+		<h2 id="skills-heading">Focus areas</h2>
+		<div class="chips" role="list">
+			{experience.skills.map((s) => <span class="chip" role="listitem">{s}</span>)}
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="exp-heading">
+		<h2 id="exp-heading">Experience</h2>
+		<div class="timeline">
+			{
+				experience.positions.map((job) => (
+					<article>
+						<header>
+							<h3>
+								{'companyUrl' in job && job.companyUrl ? (
+									<a href={job.companyUrl} target="_blank" rel="noopener noreferrer">
+										{job.company}
+									</a>
+								) : (
+									job.company
+								)}
+							</h3>
+							<span class="role">{job.role}</span>
+							<span class="period">
+								{job.period} · {job.location}
+							</span>
+						</header>
+						<ul>
+							{job.highlights.map((h) => (
+								<li>{h}</li>
+							))}
+						</ul>
+					</article>
+				))
+			}
+		</div>
+		<p style="margin-top: 1rem;">
+			<a href={withBase('projects')}>Project highlights →</a>
+		</p>
+	</section>
+
+	{
+		education.length ? (
+			<section class="section" aria-labelledby="edu-heading">
+				<h2 id="edu-heading">Education</h2>
+				<ul class="edu-list">
+					{education.map((line) => (
+						<li>{line}</li>
+					))}
+				</ul>
+			</section>
+		) : null
+	}
+
+	{
+		certifications.length ? (
+			<section class="section" aria-labelledby="cert-heading">
+				<h2 id="cert-heading">Certifications</h2>
+				<ul class="edu-list">
+					{certifications.map((c) => (
+						<li>{c}</li>
+					))}
+				</ul>
+			</section>
+		) : null
+	}
+
+	<section class="section" aria-labelledby="blog-heading">
+		<h2 id="blog-heading">Blog</h2>
+		{
+			posts.length ? (
+				<>
+					<ul class="post-list">
+						{posts.map((post) => (
+							<li>
+								<a class="title" href={withBase(`blog/${post.id}`)}>
+									{post.data.title}
+								</a>
+								<time datetime={post.data.pubDate.toISOString()}>
+									{post.data.pubDate.toLocaleDateString('en-US', {
+										year: 'numeric',
+										month: 'short',
+										day: 'numeric',
+									})}
+								</time>
+								<p class="excerpt">{post.data.description}</p>
+							</li>
+						))}
+					</ul>
+					<p style="margin-top: 1rem;">
+						<a href={withBase('blog')}>All articles →</a>
+					</p>
+				</>
+			) : (
+				<p class="subtitle" style="margin-top: 0;">
+					No articles yet. Add Markdown files under <code>src/content/blog/</code> when you are ready to publish notes
+					or research.
+				</p>
+			)
+		}
+	</section>
+
+	<section class="section" aria-labelledby="talks-heading">
+		<h2 id="talks-heading">Talks and recordings</h2>
+		{
+			talkTeasers.length ? (
+				<>
+					<ul class="post-list">
+						{talkTeasers.map((t) => (
+							<li>
+								<a class="title" href={withBase('talks')}>
+									{t.title}
+								</a>
+								<time datetime={t.date}>{t.event}</time>
+								<p class="excerpt">{t.description}</p>
+							</li>
+						))}
+					</ul>
+					<p style="margin-top: 1rem;">
+						<a href={withBase('talks')}>Videos and abstracts →</a>
+					</p>
+				</>
+			) : (
+				<p class="subtitle" style="margin-top: 0;">
+					No recordings listed yet. Add entries in <code>src/data/talks.json</code> with title, event, date, link, and
+					description.
+				</p>
+			)
+		}
+	</section>
+</BaseLayout>

@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import projects from '../data/projects.json';
+---
+
+<BaseLayout
+	title="Projects — Leonid Dushin"
+	description="Selected professional engagements: compliance archiving, smart grid, customer intelligence, and high-load API security."
+	navKey="projects"
+>
+	<h1 class="page-title">Projects</h1>
+	<p class="subtitle">
+		Highlights aligned with roles on my CV. Links go to employer or product context. Edit copy in <code>src/data/projects.json</code>.
+	</p>
+	<div class="cards">
+		{
+			projects.map((p) => (
+				<article class="card">
+					<h3>{p.title}</h3>
+					<p class="excerpt" style="margin-bottom: 0.65rem;">
+						<strong style="color: var(--color-text);">{p.employer}</strong>
+					</p>
+					<div class="card__meta chips">
+						{p.tech.map((t) => (
+							<span class="chip">{t}</span>
+						))}
+					</div>
+					<p>{p.description}</p>
+					<div class="card__actions">
+						{p.links.map((l) => (
+							<a href={l.href} target="_blank" rel="noopener noreferrer">
+								{l.label}
+							</a>
+						))}
+					</div>
+				</article>
+			))
+		}
+	</div>
+</BaseLayout>

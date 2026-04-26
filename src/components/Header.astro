@@ -1,0 +1,34 @@
+---
+import { withBase } from '../utils/url';
+import experience from '../data/experience.json';
+
+type NavKey = 'home' | 'projects' | 'blog' | 'talks';
+
+interface Props {
+	navKey?: NavKey;
+}
+
+const { navKey = 'home' } = Astro.props;
+
+const items: { key: NavKey; label: string; href: string }[] = [
+	{ key: 'home', label: 'Home', href: withBase('') },
+	{ key: 'projects', label: 'Projects', href: withBase('projects') },
+	{ key: 'blog', label: 'Blog', href: withBase('blog') },
+	{ key: 'talks', label: 'Talks', href: withBase('talks') },
+];
+---
+
+<header class="site-header">
+	<div class="site-header__inner">
+		<a class="brand" href={withBase('')}>{experience.name}</a>
+		<nav class="nav" aria-label="Primary">
+			{
+				items.map((item) => (
+					<a href={item.href} aria-current={navKey === item.key ? 'page' : undefined}>
+						{item.label}
+					</a>
+				))
+			}
+		</nav>
+	</div>
+</header>

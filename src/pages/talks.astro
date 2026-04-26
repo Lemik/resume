@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import talks from '../data/talks.json';
+import { youtubeIdFromUrl } from '../utils/youtube';
+---
+
+<BaseLayout
+	title="Talks and videos — Leonid Dushin"
+	description="Conference talks, meetups, and recorded presentations."
+	navKey="talks"
+>
+	<h1 class="page-title">Talks and videos</h1>
+	<p class="subtitle">
+		Add rows to <code>src/data/talks.json</code>. YouTube links show an optional embed; other hosts show the external link only.
+	</p>
+	{
+		talks.length ? (
+			<div class="timeline">
+				{talks.map((t) => {
+					const yt = youtubeIdFromUrl(t.href);
+					return (
+						<article>
+							<header>
+								<h3>{t.title}</h3>
+								<span class="period">
+									{t.event} ·{' '}
+									<time datetime={t.date}>
+										{new Date(t.date).toLocaleDateString('en-US', {
+											year: 'numeric',
+											month: 'short',
+											day: 'numeric',
+										})}
+									</time>
+								</span>
+							</header>
+							<p class="lede" style="margin-bottom: 0.75rem;">
+								{t.description}
+							</p>
+							<p class="card__actions">
+								<a href={t.href} target="_blank" rel="noopener noreferrer">
+									Open recording
+								</a>
+							</p>
+							{yt ? (
+								<div class="embed">
+									<iframe
+										title={t.title}
+										src={`https://www.youtube-nocookie.com/embed/${yt}`}
+										loading="lazy"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+										referrerpolicy="strict-origin-when-cross-origin"
+										allowfullscreen
+									/>
+								</div>
+							) : null}
+						</article>
+					);
+				})}
+			</div>
+		) : (
+			<p class="subtitle" style="margin-top: 0;">
+				Nothing here yet. When you have conference or meetup recordings, add them to <code>src/data/talks.json</code>.
+			</p>
+		)
+	}
+</BaseLayout>

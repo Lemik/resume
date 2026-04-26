@@ -1,0 +1,28 @@
+---
+import profiles from '../data/profiles.json';
+import experience from '../data/experience.json';
+import { withBase } from '../utils/url';
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+	<div class="footer__inner">
+		<p>© {year} {experience.name}</p>
+		<div class="footer__links">
+			<a href={withBase('')}>Home</a>
+			<a href={withBase('projects')}>Projects</a>
+			<a href={withBase('blog')}>Blog</a>
+			<a href={withBase('talks')}>Talks</a>
+			{profiles.map((p) => (
+				<a
+					href={p.href}
+					target={p.href.startsWith('mailto:') ? undefined : '_blank'}
+					rel={p.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+				>
+					{p.label}
+				</a>
+			))}
+		</div>
+	</div>
+</footer>
