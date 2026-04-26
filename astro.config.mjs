@@ -1,10 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// Match your GitHub username and repo name for Pages. Update if you use a custom domain.
+// Custom domain (root of subdomain): site = your HTTPS origin, base = '/'.
+// For GitHub default URL (lemik.github.io/resume) instead, use that site + base '/resume'.
 // https://docs.astro.build/en/reference/configuration-reference/#site
-const site = 'https://lemik.github.io';
-const base = '/resume';
+const site = 'https://leonid.dushyn.com';
+const base = '/';
 
 export default defineConfig({
 	site,
