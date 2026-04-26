@@ -2,15 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import experience from '../data/experience.json';
 import profiles from '../data/profiles.json';
-import talks from '../data/talks.json';
 import { getCollection } from 'astro:content';
 import { withBase } from '../utils/url';
 
 const posts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.slice(0, 3);
-
-const talkTeasers = talks.slice(0, 2);
 
 const pageTitle = `${experience.name} — ${experience.headline}`;
 
@@ -143,35 +140,6 @@ const certifications = ex.certifications ?? [];
 				<p class="subtitle" style="margin-top: 0;">
 					No articles yet. Add Markdown files under <code>src/content/blog/</code> when you are ready to publish notes
 					or research.
-				</p>
-			)
-		}
-	</section>
-
-	<section class="section" aria-labelledby="talks-heading">
-		<h2 id="talks-heading">Talks and recordings</h2>
-		{
-			talkTeasers.length ? (
-				<>
-					<ul class="post-list">
-						{talkTeasers.map((t) => (
-							<li>
-								<a class="title" href={withBase('talks')}>
-									{t.title}
-								</a>
-								<time datetime={t.date}>{t.event}</time>
-								<p class="excerpt">{t.description}</p>
-							</li>
-						))}
-					</ul>
-					<p style="margin-top: 1rem;">
-						<a href={withBase('talks')}>Videos and abstracts →</a>
-					</p>
-				</>
-			) : (
-				<p class="subtitle" style="margin-top: 0;">
-					No recordings listed yet. Add entries in <code>src/data/talks.json</code> with title, event, date, link, and
-					description.
 				</p>
 			)
 		}

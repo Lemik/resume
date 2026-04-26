@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { withBase } from '../utils/url';
 
-type NavKey = 'home' | 'projects' | 'blog' | 'talks';
+type NavKey = 'home' | 'projects' | 'blog';
 
 interface Props {
 	title: string;
@@ -21,6 +21,20 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : As
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<script is:inline>
+			(function () {
+				try {
+					var s = localStorage.getItem('theme');
+					if (s === 'light' || s === 'dark') {
+						document.documentElement.setAttribute('data-theme', s);
+					} else {
+						document.documentElement.setAttribute('data-theme', 'dark');
+					}
+				} catch (e) {
+					document.documentElement.setAttribute('data-theme', 'dark');
+				}
+			})();
+		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />

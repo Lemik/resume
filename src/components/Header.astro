@@ -1,8 +1,9 @@
 ---
 import { withBase } from '../utils/url';
 import experience from '../data/experience.json';
+import ThemeToggle from './ThemeToggle.astro';
 
-type NavKey = 'home' | 'projects' | 'blog' | 'talks';
+type NavKey = 'home' | 'projects' | 'blog';
 
 interface Props {
 	navKey?: NavKey;
@@ -14,21 +15,23 @@ const items: { key: NavKey; label: string; href: string }[] = [
 	{ key: 'home', label: 'Home', href: withBase('') },
 	{ key: 'projects', label: 'Projects', href: withBase('projects') },
 	{ key: 'blog', label: 'Blog', href: withBase('blog') },
-	{ key: 'talks', label: 'Talks', href: withBase('talks') },
 ];
 ---
 
 <header class="site-header">
 	<div class="site-header__inner">
 		<a class="brand" href={withBase('')}>{experience.name}</a>
-		<nav class="nav" aria-label="Primary">
-			{
-				items.map((item) => (
-					<a href={item.href} aria-current={navKey === item.key ? 'page' : undefined}>
-						{item.label}
-					</a>
-				))
-			}
-		</nav>
+		<div class="header-right">
+			<nav class="nav" aria-label="Primary">
+				{
+					items.map((item) => (
+						<a href={item.href} aria-current={navKey === item.key ? 'page' : undefined}>
+							{item.label}
+						</a>
+					))
+				}
+			</nav>
+			<ThemeToggle />
+		</div>
 	</div>
 </header>

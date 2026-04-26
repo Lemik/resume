@@ -1,6 +1,6 @@
 # SDET resume and blog (Astro + GitHub Pages)
 
-Static portfolio site: resume-style home page, projects, Markdown blog, talks with optional YouTube embeds, and footer links to profiles (LinkedIn, Codewars, etc.). Built with [Astro](https://astro.build/) and deployed with GitHub Actions.
+Static portfolio site: resume-style home page, projects, Markdown blog, and profile links. Built with [Astro](https://astro.build/) and deployed with GitHub Actions.
 
 ## Prerequisites
 
@@ -22,8 +22,7 @@ Open the URL shown in the terminal (usually `http://localhost:4321/`).
 |------|--------|
 | Your name, headline, summary, skills, jobs | [`src/data/experience.json`](src/data/experience.json) |
 | Project cards and outbound links | [`src/data/projects.json`](src/data/projects.json) |
-| LinkedIn, GitHub, Codewars, etc. | [`src/data/profiles.json`](src/data/profiles.json) |
-| Talks, events, video URLs | [`src/data/talks.json`](src/data/talks.json) |
+| LinkedIn, GitHub, email, etc. | [`src/data/profiles.json`](src/data/profiles.json) |
 | Blog posts (Markdown) | [`src/content/blog/`](src/content/blog/) |
 
 Each blog file needs frontmatter fields defined in [`src/content.config.ts`](src/content.config.ts): `title`, `description`, `pubDate`, optional `updatedDate` and `tags`.
@@ -64,7 +63,7 @@ npm run preview
 
 ## Project structure (high level)
 
-- `src/pages/` — routes (`index`, `projects`, `talks`, `blog/…`).
+- `src/pages/` — routes (`index`, `projects`, `blog/…`).
 - `src/layouts/BaseLayout.astro` — shell, SEO meta, global CSS import.
 - `src/components/` — header and footer.
 - `src/styles/global.css` — theme and layout.
