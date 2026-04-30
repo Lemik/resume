@@ -23,22 +23,48 @@ const certifications = ex.certifications ?? [];
 
 <BaseLayout title={pageTitle} description={experience.summary} navKey="home">
 	<section class="hero">
-		<h1>{experience.headline}</h1>
-		<p class="tagline">{experience.tagline}</p>
-		<p class="lede">{experience.summary}</p>
-		<div class="profiles" aria-label="Contact and profiles">
-			{
-				profiles.map((p) => (
-					<a
-						href={p.href}
-						target={p.href.startsWith('mailto:') ? undefined : '_blank'}
-						rel={p.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-						title={'hint' in p && p.hint ? p.hint : undefined}
-					>
-						{p.label}
-					</a>
-				))
-			}
+		<div class="hero__intro">
+			<h1>{experience.headline}</h1>
+			<p class="tagline">{experience.tagline}</p>
+		</div>
+		<div class="hero__body">
+			<figure class="hero-photo">
+				<img
+					class="hero-photo__img hero-photo__img--dark"
+					src={withBase('1777515938744.png')}
+					alt={`${experience.name}, professional headshot`}
+					width="280"
+					height="280"
+					loading="eager"
+					fetchpriority="high"
+				/>
+				<img
+					class="hero-photo__img hero-photo__img--light"
+					src={withBase('1777515938745.png')}
+					alt={`${experience.name}, professional headshot`}
+					width="280"
+					height="280"
+					loading="eager"
+					fetchpriority="high"
+				/>
+			</figure>
+			<div class="hero__text">
+				<p class="lede">{experience.summary}</p>
+				<div class="profiles" aria-label="Contact and profiles">
+					{
+						profiles.map((p) => (
+							<a
+								href={p.href}
+								target={p.href.startsWith('mailto:') ? undefined : '_blank'}
+								rel={p.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+								title={'hint' in p && p.hint ? p.hint : undefined}
+							>
+								{p.label}
+							</a>
+						))
+					}
+				</div>
+			</div>
 		</div>
 	</section>
 
