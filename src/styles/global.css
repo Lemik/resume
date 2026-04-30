@@ -16,6 +16,7 @@
 	--space: 1.25rem;
 	--body-gradient: radial-gradient(1200px 600px at 10% -10%, #132238 0%, transparent 55%),
 		radial-gradient(900px 500px at 100% 0%, #0f172a 0%, transparent 50%);
+	--post-list-thumb-panel-bg: #ffffff;
 }
 
 html[data-theme='light'] {
@@ -31,6 +32,7 @@ html[data-theme='light'] {
 	--shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
 	--body-gradient: radial-gradient(900px 480px at 8% -8%, rgba(14, 165, 233, 0.14) 0%, transparent 55%),
 		radial-gradient(700px 400px at 96% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+	--post-list-thumb-panel-bg: #f8fafc;
 }
 
 *,
@@ -452,6 +454,55 @@ html[data-theme='light'] .hero-photo__img--light {
 	color: var(--color-accent);
 }
 
+.post-list__item {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	gap: 0;
+	list-style: none;
+	overflow: hidden;
+}
+
+.post-list__body {
+	flex: 1;
+	min-width: 0;
+	padding: 1rem 1.15rem;
+}
+
+.post-list__item:has(.post-list__thumb-panel) .post-list__body {
+	padding-right: 1rem;
+}
+
+.post-list__thumb-panel {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	background: var(--post-list-thumb-panel-bg);
+	border-left: 1px solid var(--color-border);
+	margin-right: 1rem;
+	box-sizing: border-box;
+}
+
+.post-list__thumb {
+	display: block;
+	width: clamp(10rem, 32vw, 14rem);
+	height: auto;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+	border-radius: calc(var(--radius) - 4px);
+	border: 1px solid var(--color-border);
+}
+
+.post-list__tags {
+	margin-top: 0.5rem;
+}
+
 .post-list {
 	list-style: none;
 	padding: 0;
@@ -459,13 +510,6 @@ html[data-theme='light'] .hero-photo__img--light {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
-}
-
-.post-list li {
-	background: var(--color-surface);
-	border: 1px solid var(--color-border);
-	border-radius: var(--radius);
-	padding: 1rem 1.15rem;
 }
 
 .post-list a.title {
@@ -493,55 +537,85 @@ html[data-theme='light'] .hero-photo__img--light {
 }
 
 .prose {
-	max-width: 48rem;
+
+	background: #ffffff;
+	color: #0f172a;
+	padding: 1.5rem 1.5rem 2.25rem;
+	border-radius: var(--radius);
+	border: 1px solid #e2e8f0;
+	box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+}
+
+html[data-theme='dark'] .prose {
+	border-color: #cbd5e1;
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 .prose h1 {
 	margin-top: 0;
 	font-size: 2rem;
 	letter-spacing: -0.02em;
+	color: #0f172a;
 }
 
 .prose .meta {
-	color: var(--color-muted);
+	color: #64748b;
 	font-size: 0.95rem;
 	margin-bottom: 1.5rem;
 }
 
+.prose-cover {
+	margin: 0 0 1.5rem;
+}
+
+.prose-cover img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: var(--radius);
+	border: 1px solid #e2e8f0;
+	box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+}
+
 .prose :where(h2, h3) {
 	margin-top: 1.75rem;
+	color: #0f172a;
 }
 
 .prose :where(p, li) {
-	color: var(--color-muted);
+	color: #475569;
 }
 
 .prose :where(strong) {
-	color: var(--color-text);
+	color: #0f172a;
 }
 
 .prose :where(a) {
-	color: var(--color-accent);
+	color: #0369a1;
+}
+
+.prose a:hover {
+	color: #0c4a6e;
 }
 
 .prose :not(pre) > code {
 	font-family: var(--font-mono);
 	font-size: 0.88em;
-	background: var(--color-surface-2);
+	background: #f1f5f9;
 	padding: 0.12em 0.35em;
 	border-radius: 4px;
-	border: 1px solid var(--color-border);
-	color: var(--color-text);
+	border: 1px solid #e2e8f0;
+	color: #0f172a;
 }
 
 .prose pre {
 	font-family: var(--font-mono);
 	font-size: 0.85rem;
-	background: var(--color-surface-2);
+	background: #1e293b;
 	padding: 1rem;
 	border-radius: var(--radius);
 	overflow: auto;
-	border: 1px solid var(--color-border);
+	border: 1px solid #334155;
 }
 
 .prose pre code {
@@ -549,7 +623,18 @@ html[data-theme='light'] .hero-photo__img--light {
 	border: 0;
 	padding: 0;
 	font-size: inherit;
-	color: var(--color-text);
+	color: #e2e8f0;
+}
+
+.prose blockquote {
+	margin: 1.25rem 0;
+	padding: 0.75rem 0 0.75rem 1rem;
+	border-left: 4px solid #cbd5e1;
+	color: #475569;
+}
+
+.prose blockquote p {
+	margin: 0;
 }
 
 .edu-list {
@@ -627,7 +712,7 @@ html[data-theme='light'] .hero-photo__img--light {
 
 	.card,
 	.timeline article,
-	.post-list li {
+	.post-list__item {
 		box-shadow: none;
 		border-color: #ccc;
 		break-inside: avoid;

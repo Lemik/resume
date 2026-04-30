@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogPostListItem from '../components/BlogPostListItem.astro';
 import experience from '../data/experience.json';
 import profiles from '../data/profiles.json';
 import { getCollection } from 'astro:content';
@@ -143,19 +144,7 @@ const certifications = ex.certifications ?? [];
 				<>
 					<ul class="post-list">
 						{posts.map((post) => (
-							<li>
-								<a class="title" href={withBase(`blog/${post.id}`)}>
-									{post.data.title}
-								</a>
-								<time datetime={post.data.pubDate.toISOString()}>
-									{post.data.pubDate.toLocaleDateString('en-US', {
-										year: 'numeric',
-										month: 'short',
-										day: 'numeric',
-									})}
-								</time>
-								<p class="excerpt">{post.data.description}</p>
-							</li>
+							<BlogPostListItem post={post} />
 						))}
 					</ul>
 					<p style="margin-top: 1rem;">

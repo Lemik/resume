@@ -10,6 +10,10 @@ const blog = defineCollection({
 		pubDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
 		tags: z.array(z.string()).optional(),
+		/** Path under `public/` (no leading slash), e.g. `images/blog/cover.jpg`, or an `https://` URL. */
+		image: z.string().optional(),
+		/** Alt text for the article hero image; defaults to `title`. */
+		imageAlt: z.string().optional(),
 	}),
 });
 
