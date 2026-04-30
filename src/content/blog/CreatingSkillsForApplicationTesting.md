@@ -1,16 +1,17 @@
-# Creating Skills for Application Testing
+---
+title: 'Creating Skills for Application Testing'
+description: >-
+  Skills are reusable instructions, workflows, and domain knowledge that help an AI assistant perform a specific kind of work consistently. For application testing, skills can turn a general AI assistant into a more reliable testing partner by teaching it how a team writes tests, triages failures, handles test data, reviews accessibility, reports defects, and works inside CI/CD.
 
-_Article draft. Prepared April 30, 2026._
+  A skill is not a replacement for testing strategy. It is a way to package repeatable testing judgment so the assistant starts from the team's standards instead of guessing. A good testing skill can say: use Playwright roles before CSS selectors, never paste production data into prompts, attach trace links to bug reports, classify flaky tests separately from product bugs, and require QA review when assertions change.
 
-![8-bit illustration of reusable AI testing skills](Images/creating-skills-application-testing-8bit.png)
-
-## Executive Summary
-
-Skills are reusable instructions, workflows, and domain knowledge that help an AI assistant perform a specific kind of work consistently. For application testing, skills can turn a general AI assistant into a more reliable testing partner by teaching it how a team writes tests, triages failures, handles test data, reviews accessibility, reports defects, and works inside CI/CD.
-
-A skill is not a replacement for testing strategy. It is a way to package repeatable testing judgment so the assistant starts from the team's standards instead of guessing. A good testing skill can say: use Playwright roles before CSS selectors, never paste production data into prompts, attach trace links to bug reports, classify flaky tests separately from product bugs, and require QA review when assertions change.
-
-The value is consistency. Without skills, every prompt depends on whoever is typing it. With skills, the team can standardize how AI helps across test design, automation, maintenance, reporting, and release support.
+  The value is consistency. Without skills, every prompt depends on whoever is typing it. With skills, the team can standardize how AI helps across test design, automation, maintenance, reporting, and release support.
+published: true
+pubDate: 2026-04-22
+tags: ['ai', 'skills', 'testing', 'playwright']
+image: images/blog/creating-skills-application-testing-8bit.png
+imageAlt: 8-bit illustration related to skills for application testing
+---
 
 ## What a Skill Can Do
 

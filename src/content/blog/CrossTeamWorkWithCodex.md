@@ -1,16 +1,17 @@
-# Cross-Team Work With Codex: QA, Developers, and Equal Ownership in Software Delivery
+---
+title: 'Cross-Team Work With Codex: QA, Developers, and Equal Ownership in Software Delivery'
+description: >-
+  AI coding agents such as Codex change how software teams divide work. They make it easier for QA engineers to contribute closer to unit and integration testing, and they make it easier for developers to contribute more directly to end-to-end testing, exploratory support, and release evidence. This does not erase the difference between QA and development. It changes where the boundaries sit.
 
-_Article draft. Prepared April 30, 2026._
+  In the old model, developers often owned code and unit tests while QA owned test plans, manual validation, automation suites, and release confidence. In the new model, the tools lower the cost of crossing those boundaries. QA can ask an agent to inspect implementation details, draft unit tests, add API checks, and run focused commands. Developers can ask an agent to create end-to-end scenarios, review traces, summarize release risk, and improve testability.
 
-![8-bit illustration of QA and developers collaborating with Codex across testing layers](Images/cross-team-work-with-codex-8bit.png)
-
-## Executive Summary
-
-AI coding agents such as Codex change how software teams divide work. They make it easier for QA engineers to contribute closer to unit and integration testing, and they make it easier for developers to contribute more directly to end-to-end testing, exploratory support, and release evidence. This does not erase the difference between QA and development. It changes where the boundaries sit.
-
-In the old model, developers often owned code and unit tests while QA owned test plans, manual validation, automation suites, and release confidence. In the new model, the tools lower the cost of crossing those boundaries. QA can ask an agent to inspect implementation details, draft unit tests, add API checks, and run focused commands. Developers can ask an agent to create end-to-end scenarios, review traces, summarize release risk, and improve testability.
-
-The result should be equality on the field of software development: not because everyone does the same work, but because quality becomes a shared engineering responsibility. QA brings risk thinking, product judgment, exploratory skill, and user empathy. Developers bring implementation knowledge, architecture, code ownership, and testability. Codex becomes a shared accelerator between those roles.
+  The result should be equality on the field of software development: not because everyone does the same work, but because quality becomes a shared engineering responsibility. QA brings risk thinking, product judgment, exploratory skill, and user empathy. Developers bring implementation knowledge, architecture, code ownership, and testability. Codex becomes a shared accelerator between those roles.
+published: true
+pubDate: 2026-04-15
+tags: ['codex', 'qa', 'collaboration', 'sdlc']
+image: images/blog/cross-team-work-with-codex-8bit.png
+imageAlt: 8-bit illustration of QA and developers collaborating with Codex across testing layers
+---
 
 ## The Old Boundary
 

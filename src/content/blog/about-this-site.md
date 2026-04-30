@@ -1,6 +1,7 @@
 ---
 title: About this site
 description: Static portfolio built with Astro; professional content is synced from my CV.
+published: false
 pubDate: 2026-04-23
 tags: ['meta']
 ---

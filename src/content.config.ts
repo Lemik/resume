@@ -7,6 +7,8 @@ const blog = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
+		/** Omit or set false to exclude from `/blog`, home highlights, and public URLs while developing. */
+		published: z.boolean().default(true),
 		pubDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
 		tags: z.array(z.string()).optional(),

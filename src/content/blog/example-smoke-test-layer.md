@@ -3,7 +3,8 @@ title: 'Example: a thin smoke layer you can run on every PR'
 description: >-
   A concrete pattern for a fast UI smoke suite—scope, folder layout, and one
   Playwright-style check—written as a reference post for this blog.
-pubDate: 2026-04-29
+published: false
+pubDate: 2036-04-29
 tags: ['playwright', 'ci', 'example']
 image: images/blog/placeholder.svg
 imageAlt: Abstract blog cover graphic with “Article cover” label

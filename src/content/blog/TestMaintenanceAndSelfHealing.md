@@ -1,16 +1,17 @@
-# Test Maintenance and Self-Healing in CI/CD
+---
+title: 'Test Maintenance and Self-Healing in CI/CD'
+description: >-
+  Test maintenance is one of the largest hidden costs in test automation. Automated tests are valuable only when teams trust them, but trust disappears when tests fail for reasons unrelated to product quality: renamed buttons, changed locators, slow environments, stale test data, broken fixtures, expired credentials, or brittle waits.
 
-_Article draft. Prepared April 30, 2026._
+  Self-healing test automation tries to reduce that maintenance cost. A self-healing system detects why a test failed, proposes or applies a low-risk repair, verifies that the test still checks the same user behavior, and records the change for review. In a CI/CD pipeline, this can turn noisy failures into structured maintenance work instead of forcing QA engineers to manually inspect every broken test from scratch.
 
-![8-bit illustration of self-healing test automation in a CI/CD pipeline](Images/test-maintenance-self-healing-8bit.png)
-
-## Executive Summary
-
-Test maintenance is one of the largest hidden costs in test automation. Automated tests are valuable only when teams trust them, but trust disappears when tests fail for reasons unrelated to product quality: renamed buttons, changed locators, slow environments, stale test data, broken fixtures, expired credentials, or brittle waits.
-
-Self-healing test automation tries to reduce that maintenance cost. A self-healing system detects why a test failed, proposes or applies a low-risk repair, verifies that the test still checks the same user behavior, and records the change for review. In a CI/CD pipeline, this can turn noisy failures into structured maintenance work instead of forcing QA engineers to manually inspect every broken test from scratch.
-
-The important rule is simple: self-healing should preserve test intent, not hide product defects. A system may safely update a locator when a button is renamed from `Submit` to `Save`, but it must not silently skip a missing checkout step or loosen an assertion until a broken feature appears healthy. QA and TPM involvement is required wherever the test meaning, release risk, ownership, or timeline changes.
+  The important rule is simple: self-healing should preserve test intent, not hide product defects. A system may safely update a locator when a button is renamed from `Submit` to `Save`, but it must not silently skip a missing checkout step or loosen an assertion until a broken feature appears healthy. QA and TPM involvement is required wherever the test meaning, release risk, ownership, or timeline changes.
+published: true
+pubDate: 2026-03-18
+tags: ['ci', 'automation', 'maintenance', 'flakiness']
+image: images/blog/test-maintenance-self-healing-8bit.png
+imageAlt: 8-bit illustration of self-healing test automation in a CI/CD pipeline
+---
 
 ## The Problem
 

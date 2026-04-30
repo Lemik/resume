@@ -1,16 +1,17 @@
-# Failure Triage Automation: From Issue Detection to Approved Fix
+---
+title: 'Failure Triage Automation: From Issue Detection to Approved Fix'
+description: >-
+  Failure triage is one of the most expensive parts of modern CI/CD. A failing pipeline can mean many different things: a real product bug, a broken test, stale data, an environment issue, a dependency outage, a flaky timing problem, or a missing requirement. Teams lose time when every failure requires a human to open logs, inspect screenshots, read traces, reproduce locally, find the owner, and decide what to do next.
 
-_Article draft. Prepared April 30, 2026._
+  AI-assisted failure triage can automate much of this work. The pipeline can collect evidence, classify the failure, identify the likely root cause, propose a fix, validate that fix in an isolated run, and open a pull request or issue with the solution attached. The human should not receive only "something failed." The human should receive "this failed, here is why, here is the proposed fix, here is the evidence, and here is the approval button."
 
-![8-bit illustration of automated failure triage with proposed fixes awaiting approval](Images/failure-triage-automation-8bit.png)
-
-## Executive Summary
-
-Failure triage is one of the most expensive parts of modern CI/CD. A failing pipeline can mean many different things: a real product bug, a broken test, stale data, an environment issue, a dependency outage, a flaky timing problem, or a missing requirement. Teams lose time when every failure requires a human to open logs, inspect screenshots, read traces, reproduce locally, find the owner, and decide what to do next.
-
-AI-assisted failure triage can automate much of this work. The pipeline can collect evidence, classify the failure, identify the likely root cause, propose a fix, validate that fix in an isolated run, and open a pull request or issue with the solution attached. The human should not receive only "something failed." The human should receive "this failed, here is why, here is the proposed fix, here is the evidence, and here is the approval button."
-
-The key design principle is control. The system can automate investigation and draft remediation, but humans should approve meaningful changes. A triage agent should not silently weaken tests, skip checks, or change product behavior just to make the build green.
+  The key design principle is control. The system can automate investigation and draft remediation, but humans should approve meaningful changes. A triage agent should not silently weaken tests, skip checks, or change product behavior just to make the build green.
+published: true
+pubDate: 2026-04-8
+tags: ['ci', 'triage', 'ai', 'devops']
+image: images/blog/failure-triage-automation-8bit.png
+imageAlt: 8-bit illustration of automated failure triage with proposed fixes awaiting approval
+---
 
 ## The Problem
 
