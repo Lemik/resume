@@ -32,38 +32,7 @@ The assistant still needs context from the repo, product, or ticket. The skill g
 
 AI can generate a lot of test-related output quickly, but fast output is not automatically useful. QA teams need repeatable quality, clear risk coverage, and evidence that generated work matches the product.
 
-Skills help by encoding local testing standards:
-
-- What "good enough" test coverage means for the team.
-- Which user journeys are critical.
-- Which test types should be used for each risk.
-- How to name tests.
-- How to choose stable selectors.
-- How to avoid flaky waits.
-- How to write meaningful assertions.
-- When to create a bug versus update a test.
-- When human approval is required.
-
-This makes AI assistance less random and more aligned with how the team already works.
-
 ## Possible Use Cases
-
-### Test Case Design
-
-A test design skill can convert a story, requirement, design, or release note into structured test cases.
-
-It can produce:
-
-- Happy path scenarios.
-- Negative scenarios.
-- Boundary values.
-- Permission and role variations.
-- Localization risks.
-- Accessibility considerations.
-- Data setup requirements.
-- Regression impact areas.
-
-QA should still review the output because AI may invent requirements or miss domain-specific rules.
 
 ### Automated Test Generation
 
@@ -105,8 +74,6 @@ It can inspect:
 
 - Stack traces.
 - Browser screenshots.
-- Playwright traces.
-- Cypress videos.
 - API responses.
 - Console logs.
 - Recent commits.
@@ -128,21 +95,6 @@ It can propose:
 - Pull requests for low-risk maintenance.
 
 The skill should also define hard limits: do not remove assertions, do not skip critical tests, do not change app behavior to make a test pass, and require QA approval when test intent changes.
-
-### Test Data Generation
-
-A test data skill can create synthetic data from documented rules.
-
-It can generate:
-
-- Boundary values.
-- Invalid inputs.
-- Role and permission combinations.
-- Address and locale examples.
-- API payload variations.
-- Accessibility label examples.
-
-It should also enforce privacy rules. Production personal data, secrets, credentials, customer records, and regulated data should not be placed into prompts or generated fixtures unless the company has explicitly approved that data path.
 
 ### Accessibility Testing
 
@@ -221,21 +173,6 @@ Teams can create separate skills for different testing jobs:
 | API Contract Test Builder | Draft API and consumer contract checks | developer / QA |
 | Release Risk Summary | Produce quality status for release decisions | TPM / QA lead |
 | Self-Healing Review | Evaluate proposed test maintenance changes | QA |
-
-## Where QA Stays Essential
-
-Skills can make AI more useful, but QA still owns testing judgment.
-
-QA is needed to decide:
-
-- Which risks matter most.
-- Whether a requirement is clear enough to test.
-- Whether an assertion represents correct product behavior.
-- Whether a failure is a product defect or a test issue.
-- Whether generated tests create meaningful coverage.
-- Whether a release has acceptable residual risk.
-
-Skills can preserve and distribute QA practices. They cannot replace the practice itself.
 
 ## Implementation Roadmap
 
