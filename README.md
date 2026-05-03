@@ -46,9 +46,15 @@ Wrong `site`/`base` pairs break styles, navigation, and canonical URLs.
 3. **Settings → Pages**: under **Build and deployment**, ensure the **GitHub Pages** environment can deploy (first run may prompt for approval).
 4. Push to `main` (or merge a PR). The workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) runs `npm ci`, `npm run build`, and publishes the `dist/` folder.
 
-The live URL for a **project** site is:
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
 
-`https://<github-username>.github.io/<repository-name>/`
 
 For example, repository `resume` is served at `https://<github-username>.github.io/resume/`. That differs from a hostname shaped like `resume.username.github.io` unless you own that domain and point it at GitHub Pages with a custom domain and `CNAME`.
 
@@ -61,7 +67,14 @@ npm run build
 npm run preview
 ```
 
-## Project structure (high level)
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
 - `src/pages/` — routes (`index`, `projects`, `blog/…`).
 - `src/layouts/BaseLayout.astro` — shell, SEO meta, global CSS import.

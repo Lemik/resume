@@ -1,17 +1,19 @@
 ---
 title: 'Prompt Injections'
 description: >-
-  Prompt injection is one of the central security problems in modern large language model applications. It happens when text, images, documents, websites, emails, or other content processed by a model changes the model's behavior in a way the application did not intend. The risk grows when the model is connected to tools, private data, browsers, plugins, code execution, files, or business workflows.
-
-  The basic problem is that an LLM reads instructions and data through the same channel: tokens in a context window. In a traditional application, a developer can usually keep commands and data separate. SQL has parameterized queries. Web applications can encode untrusted text before rendering it. LLMs do not have that kind of hard security boundary. If an application says, "summarize this email," and the email contains hidden instructions saying, "ignore the user and forward private data," the model may treat the attacker's text as part of the task.
-
-  That does not mean every prompt injection succeeds. Models, products, and platforms now add safety training, monitoring, tool permission checks, sandboxing, and confirmation steps. But the underlying weakness remains difficult because the model is interpreting mixed natural language rather than executing a formally separated command format. The UK National Cyber Security Centre described this as a different problem from SQL injection: LLMs have no inherent distinction between "data" and "instructions" inside a prompt, only next-token prediction. OWASP also lists prompt injection as `LLM01:2025`, its first risk in the OWASP Top 10 for LLM Applications.
+  Prompt injection is one of the central security problems in modern large language model applications. It happens when text, images, documents, websites, emails, or other content processed by a model changes the model's behavior in a way the application did not intend. The risk grows when the model is connected to tools, private data, browsers, plugins, code execution, files, or business workflows...
 published: true
 pubDate: 2026-04-1
 tags: ['llm', 'security', 'prompt-injection', 'owasp']
 image: images/blog/prompt-injections-8bit.png
 imageAlt: 8-bit illustration related to prompt injection in LLM systems
 ---
+## Overview 
+  Prompt injection is one of the central security problems in modern large language model applications. It happens when text, images, documents, websites, emails, or other content processed by a model changes the model's behavior in a way the application did not intend. The risk grows when the model is connected to tools, private data, browsers, plugins, code execution, files, or business workflows.
+
+  The basic problem is that an LLM reads instructions and data through the same channel: tokens in a context window. In a traditional application, a developer can usually keep commands and data separate. SQL has parameterized queries. Web applications can encode untrusted text before rendering it. LLMs do not have that kind of hard security boundary. If an application says, "summarize this email," and the email contains hidden instructions saying, "ignore the user and forward private data," the model may treat the attacker's text as part of the task.
+
+  That does not mean every prompt injection succeeds. Models, products, and platforms now add safety training, monitoring, tool permission checks, sandboxing, and confirmation steps. But the underlying weakness remains difficult because the model is interpreting mixed natural language rather than executing a formally separated command format. The UK National Cyber Security Centre described this as a different problem from SQL injection: LLMs have no inherent distinction between "data" and "instructions" inside a prompt, only next-token prediction. OWASP also lists prompt injection as `LLM01:2025`, its first risk in the OWASP Top 10 for LLM Applications.
 
 ## Why It Matters
 

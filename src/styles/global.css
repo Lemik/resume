@@ -536,6 +536,18 @@ html[data-theme='light'] .hero-photo__img--light {
 	font-size: 0.95rem;
 }
 
+@media (max-width: 767px) {
+	.post-list__thumb-panel {
+		display: none;
+	}
+
+	.post-list time,
+	.post-list .excerpt,
+	.post-list .post-list__tags {
+		display: none;
+	}
+}
+
 .prose {
 
 	background: #ffffff;

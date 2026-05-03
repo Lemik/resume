@@ -1,18 +1,19 @@
 ---
 title: 'Test Agent in the Pipeline: Can It Replace the QA Step?'
 description: >-
-  A test agent can sit inside a CI/CD pipeline and perform useful quality work: select tests, generate checks, run automation, summarize failures, inspect logs, open bugs, propose fixes, and report release risk. For many teams, this will become a normal part of software delivery.
-
-  But a company should not treat a test agent as a full replacement for QA. The agent can accelerate testing work, but it cannot fully own product judgment, business risk, user empathy, regulatory context, exploratory testing, or release confidence. A pipeline agent can answer "what failed?" and sometimes "what should we try next?" It cannot reliably answer "is this product good enough for our users and business?"
-
-  The right model is not "replace QA with an agent." The right model is "put a test agent in the pipeline to remove repetitive work, then keep QA responsible for strategy, risk, coverage, and final interpretation."
+  A test agent can sit inside a CI/CD pipeline and perform useful quality work: select tests, generate checks, run automation, summarize failures, inspect logs, open bugs, propose fixes, and report release risk. For many teams, this will become a normal part of software delivery...
 published: true
 pubDate: 2026-03-25
 tags: ['ai', 'ci', 'qa', 'automation']
 image: images/blog/test-agent-pipeline-qa-irreplaceable-8bit.png
 imageAlt: 8-bit illustration of a test agent in a CI/CD pipeline with QA review
 ---
+## Overview 
+  A test agent can sit inside a CI/CD pipeline and perform useful quality work: select tests, generate checks, run automation, summarize failures, inspect logs, open bugs, propose fixes, and report release risk. For many teams, this will become a normal part of software delivery.
 
+  But a company should not treat a test agent as a full replacement for QA. The agent can accelerate testing work, but it cannot fully own product judgment, business risk, user empathy, regulatory context, exploratory testing, or release confidence. A pipeline agent can answer "what failed?" and sometimes "what should we try next?" It cannot reliably answer "is this product good enough for our users and business?"
+
+  The right model is not "replace QA with an agent." The right model is "put a test agent in the pipeline to remove repetitive work, then keep QA responsible for strategy, risk, coverage, and final interpretation."
 ## What a Pipeline Test Agent Can Do
 
 A test agent is an AI-assisted system connected to the development workflow. It may have access to source code, test suites, CI results, logs, traces, screenshots, requirements, tickets, and deployment metadata.

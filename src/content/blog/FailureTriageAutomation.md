@@ -1,17 +1,19 @@
 ---
 title: 'Failure Triage Automation: From Issue Detection to Approved Fix'
 description: >-
-  Failure triage is one of the most expensive parts of modern CI/CD. A failing pipeline can mean many different things: a real product bug, a broken test, stale data, an environment issue, a dependency outage, a flaky timing problem, or a missing requirement. Teams lose time when every failure requires a human to open logs, inspect screenshots, read traces, reproduce locally, find the owner, and decide what to do next.
-
-  AI-assisted failure triage can automate much of this work. The pipeline can collect evidence, classify the failure, identify the likely root cause, propose a fix, validate that fix in an isolated run, and open a pull request or issue with the solution attached. The human should not receive only "something failed." The human should receive "this failed, here is why, here is the proposed fix, here is the evidence, and here is the approval button."
-
-  The key design principle is control. The system can automate investigation and draft remediation, but humans should approve meaningful changes. A triage agent should not silently weaken tests, skip checks, or change product behavior just to make the build green.
+  Failure triage is one of the most expensive parts of modern CI/CD. A failing pipeline can mean many different things: a real product bug, a broken test, stale data, an environment issue, a dependency outage, a flaky timing problem, or a missing requirement. Teams lose time when every failure requires a human to open logs, inspect screenshots, read traces, reproduce locally, find the owner, and decide what to do next...
 published: true
 pubDate: 2026-04-8
 tags: ['ci', 'triage', 'ai', 'devops']
 image: images/blog/failure-triage-automation-8bit.png
 imageAlt: 8-bit illustration of automated failure triage with proposed fixes awaiting approval
 ---
+## Overview 
+  Failure triage is one of the most expensive parts of modern CI/CD. A failing pipeline can mean many different things: a real product bug, a broken test, stale data, an environment issue, a dependency outage, a flaky timing problem, or a missing requirement. Teams lose time when every failure requires a human to open logs, inspect screenshots, read traces, reproduce locally, find the owner, and decide what to do next.
+
+  AI-assisted failure triage can automate much of this work. The pipeline can collect evidence, classify the failure, identify the likely root cause, propose a fix, validate that fix in an isolated run, and open a pull request or issue with the solution attached. The human should not receive only "something failed." The human should receive "this failed, here is why, here is the proposed fix, here is the evidence, and here is the approval button."
+
+  The key design principle is control. The system can automate investigation and draft remediation, but humans should approve meaningful changes. A triage agent should not silently weaken tests, skip checks, or change product behavior just to make the build green.
 
 ## The Problem
 
@@ -110,8 +112,7 @@ Useful artifacts include:
 
 - Stack traces.
 - Screenshots.
-- Playwright traces.
-- Cypress videos.
+- Replay videos.
 - Console logs.
 - API responses.
 - HAR files.
@@ -120,6 +121,7 @@ Useful artifacts include:
 - Recent commits.
 - Linked ticket or requirement.
 - Related flaky-test history.
+- Deployd version of all relament products. 
 
 Evidence collection should be deterministic. The agent should not need to guess where the logs are.
 
@@ -127,11 +129,11 @@ Evidence collection should be deterministic. The agent should not need to guess 
 
 The triage agent should classify the failure into a small set of categories:
 
+- Environment issue.
 - Product bug.
 - Test bug.
 - Locator or UI maintenance.
 - Test data issue.
-- Environment issue.
 - Dependency outage.
 - Flaky timing.
 - Requirement ambiguity.
@@ -190,22 +192,6 @@ The user experience should be simple: approve, reject, request changes, or escal
 
 The reviewer should not receive raw noise. They should receive a concise package.
 
-A good approval card includes:
-
-- Failure title.
-- Failure category.
-- Confidence level.
-- Impacted feature.
-- Risk level.
-- Owner.
-- Evidence links.
-- Proposed fix summary.
-- Files changed.
-- Tests run.
-- Before and after result.
-- Approval required from role.
-- Clear action buttons or PR review request.
-
 Example:
 
 | Field | Example |
@@ -250,63 +236,11 @@ Automation should stop when:
 - The fix would skip a test.
 - The fix would remove coverage.
 - The fix would change production code without a confirmed defect.
-- The failure touches payment, identity, privacy, security, healthcare, legal, or compliance flows.
+- The failure touches payment, identity, privacy, security, legal, or compliance flows.
 - The agent cannot cite evidence.
 - The confidence level is low.
 
 In these cases, the system should escalate with evidence instead of trying to repair the pipeline.
-
-## Example: Locator Failure
-
-Scenario: a Playwright test fails because a button label changed.
-
-Automated workflow:
-
-1. CI detects the failed test.
-2. The pipeline uploads the trace and screenshot.
-3. The agent compares the DOM before and after the change.
-4. The agent finds the same button role in the same dialog.
-5. The agent proposes replacing `getByText("Send invite")` with `getByRole("button", { name: "Invite user" })`.
-6. The agent runs the failed test.
-7. The agent runs related account-invite tests.
-8. The agent opens a pull request.
-9. QA reviews whether the test still covers the same behavior.
-10. The reviewer approves or rejects the change.
-
-This is a strong automation case because the fix is small, visible, and easy to validate.
-
-## Example: Product Regression
-
-Scenario: a checkout test fails because the order total is wrong.
-
-Automated workflow:
-
-1. CI detects the failed test.
-2. The agent reads the assertion failure, API response, and recent billing commits.
-3. The agent compares the expected and actual totals.
-4. The agent detects that tax is no longer applied for one region.
-5. The agent opens a bug with evidence.
-6. The agent suggests adding a unit test around regional tax calculation.
-7. The agent does not change the end-to-end assertion.
-8. QA and the billing developer review the bug.
-
-This is not a self-healing case. It is a product defect until humans decide otherwise.
-
-## Example: Flaky Timing
-
-Scenario: a test fails intermittently when waiting for search results.
-
-Automated workflow:
-
-1. The agent checks historical failures.
-2. It finds the test fails 7% of the time across unrelated commits.
-3. It inspects the trace and sees the assertion runs before the API response completes.
-4. It proposes waiting for a specific search result state instead of adding a fixed timeout.
-5. It runs the test repeatedly in isolation.
-6. It opens a pull request with the targeted synchronization change.
-7. QA reviews whether the user behavior is still validated.
-
-The important detail is that the fix targets the cause, not the symptom.
 
 ## Required Guardrails
 
@@ -327,46 +261,6 @@ Recommended rules:
 
 These rules keep the system useful without making it dangerous.
 
-## QA, Developer, and TPM Roles
-
-### QA
-
-QA owns test intent and risk coverage.
-
-QA should approve:
-
-- Assertion changes.
-- Test maintenance in critical flows.
-- Quarantine decisions.
-- New regression tests.
-- Changes to test data scenarios.
-- Classification of ambiguous failures.
-
-### Developers
-
-Developers own product defects, code quality, and testability.
-
-Developers should approve:
-
-- Product-code fixes.
-- Unit and integration test changes.
-- API contract updates.
-- Fixture changes that require implementation knowledge.
-- Observability improvements.
-
-### TPMs
-
-TPMs own visibility and coordination when failures affect delivery.
-
-TPMs should track:
-
-- Release-blocking failures.
-- Aging failures.
-- Cross-team ownership.
-- Repeated infrastructure issues.
-- Risk accepted for release.
-- Whether automation is reducing triage time or hiding real problems.
-
 ## Metrics
 
 Measure the system by the quality of triage, not only by faster green builds.
@@ -386,30 +280,6 @@ Useful metrics:
 
 If approval speed improves and escaped defects do not increase, the system is helping. If the pipeline becomes greener while production defects rise, the automation is hiding risk.
 
-## Implementation Roadmap
-
-Start with read-only triage:
-
-1. Collect artifacts consistently.
-2. Summarize failures in pull requests.
-3. Group failures by root cause.
-4. Add owner and risk metadata.
-
-Then add proposed solutions:
-
-1. Generate bug reports with evidence.
-2. Propose low-risk test-maintenance patches.
-3. Run focused validation.
-4. Open pull requests for review.
-
-Then add controlled approval workflows:
-
-1. Require QA approval for test intent changes.
-2. Require developer approval for code changes.
-3. Require TPM visibility for release blockers.
-4. Track accepted and rejected agent recommendations.
-
-This incremental path builds trust before giving the system more authority.
 
 ## Conclusion
 
