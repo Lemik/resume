@@ -43,6 +43,14 @@ Wrong `site`/`base` pairs break styles, navigation, and canonical URLs.
 
 1. Push this repository to GitHub (default branch **`main`**).
 2. **Settings → Pages → Build and deployment**: set **Source** to **GitHub Actions** (not “Deploy from a branch” for this workflow).
+
+### If the build logs mention Jekyll, YAML, or `.astro`
+
+That means Pages is still using **“Deploy from a branch”** and GitHub is running **Jekyll** on the whole repo. Jekyll mis-reads the `---` blocks in Astro files as YAML and fails.
+
+**Fix:** In **Settings → Pages → Build and deployment**, change **Source** from *Deploy from a branch* to **GitHub Actions**, then re-run the workflow from the **Actions** tab (or push to `main`). This site is **not** a Jekyll project; the Action builds Astro and publishes only the contents of `dist/`.
+
+This repo also ships **`public/.nojekyll`** so the published static output never runs Jekyll, even if settings change.
 3. **Settings → Pages**: under **Build and deployment**, ensure the **GitHub Pages** environment can deploy (first run may prompt for approval).
 4. Push to `main` (or merge a PR). The workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) runs `npm ci`, `npm run build`, and publishes the `dist/` folder.
 
