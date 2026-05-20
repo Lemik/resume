@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
+import profiles from '../../data/profiles.json';
 import { resolvePublicOrAbsolute } from '../../utils/url';
 import { publishedBlogPosts } from '../../utils/blog';
+import { blogPostingSchema } from '../../utils/structured-data';
 
 export async function getStaticPaths() {
 	const posts = publishedBlogPosts(await getCollection('blog'));
@@ -18,9 +20,28 @@ const { Content } = await render(post);
 const title = `${post.data.title} — Blog`;
 const coverSrc = post.data.image ? resolvePublicOrAbsolute(post.data.image) : null;
 const coverAlt = post.data.imageAlt ?? post.data.title;
+
+const site = Astro.site;
+if (!site) {
+	throw new Error('Configure `site` in `astro.config.mjs` so canonical URLs and JSON-LD resolve.');
+}
+
+const canonicalHref = new URL(Astro.url.pathname, site).href;
+const authorSameAs = profiles.filter((p) => /^https?:\/\//i.test(p.href)).map((p) => p.href);
 ---
 
-<BaseLayout title={title} description={post.data.description} navKey="blog">
+<BaseLayout
+	title={title}
+	description={post.data.description}
+	navKey="blog"
+	image={post.data.image}
+	imageAlt={coverAlt}
+	ogType="article"
+	articlePublishedTime={post.data.pubDate.toISOString()}
+	articleModifiedTime={post.data.updatedDate?.toISOString()}
+	articleTags={post.data.tags}
+	jsonLd={[blogPostingSchema({ site, canonicalHref, entry: post, authorSameAs })]}
+>
 	<article class="prose">
 		<h1>{post.data.title}</h1>
 		<p class="meta">

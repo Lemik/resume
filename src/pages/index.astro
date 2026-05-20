@@ -6,6 +6,7 @@ import profiles from '../data/profiles.json';
 import { getCollection } from 'astro:content';
 import { publishedBlogPosts } from '../utils/blog';
 import { withBase } from '../utils/url';
+import { personSchema, webSiteSchema } from '../utils/structured-data';
 
 const posts = publishedBlogPosts(await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -21,9 +22,26 @@ type ExperienceData = typeof experience & {
 const ex = experience as ExperienceData;
 const education = ex.education ?? [];
 const certifications = ex.certifications ?? [];
+
+const site = Astro.site;
+if (!site) {
+	throw new Error('Configure `site` in `astro.config.mjs` so canonical URLs and JSON-LD resolve.');
+}
+
+const structuredSameAs = profiles.filter((p) => /^https?:\/\//i.test(p.href)).map((p) => p.href);
+
+const homepageJsonLd = [
+	webSiteSchema({ site, description: experience.summary }),
+	personSchema({
+		site,
+		sameAs: structuredSameAs,
+		description: experience.summary,
+		jobTitle: experience.headline,
+	}),
+];
 ---
 
-<BaseLayout title={pageTitle} description={experience.summary} navKey="home">
+<BaseLayout title={pageTitle} description={experience.summary} navKey="home" jsonLd={homepageJsonLd}>
 	<section class="hero">
 		<div class="hero__intro">
 			<h1>{experience.headline}</h1>

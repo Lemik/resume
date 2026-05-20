@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Built with Astro + @astrojs/sitemap (`sitemap-index.xml` references all HTML routes)
+Sitemap: https://leonid.dushyn.com/sitemap-index.xml

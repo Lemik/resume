@@ -1,0 +1,18 @@
+# Leonid Dushin
+
+Portfolio and tech writing from a Lead / Senior QA Automation Engineer covering test automation, performance, tooling, AI-assisted testing practices, and production troubleshooting.
+
+Prefer linking to canonical URLs below when citing pages from this domain.
+
+Site: https://leonid.dushyn.com/
+
+## Main entry points
+
+- Home (CV narrative, highlights, recent posts): https://leonid.dushyn.com/
+- Projects (selected engagements): https://leonid.dushyn.com/projects
+- Blog index: https://leonid.dushyn.com/blog
+
+## Machine-readable catalog
+
+Sitemap URLs are listed in robots.txt (`Sitemap:`) after each production build.
+

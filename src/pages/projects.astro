@@ -1,12 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import projects from '../data/projects.json';
+import { webPageSchema } from '../utils/structured-data';
+
+const site = Astro.site;
+if (!site) {
+	throw new Error('Configure `site` in `astro.config.mjs` so canonical URLs and JSON-LD resolve.');
+}
+
+const title = 'Projects — Leonid Dushin';
+const description =
+	'Selected professional engagements: compliance archiving, smart grid, customer intelligence, and high-load API security.';
+const canonicalHref = new URL(Astro.url.pathname, site).href;
 ---
 
 <BaseLayout
-	title="Projects — Leonid Dushin"
-	description="Selected professional engagements: compliance archiving, smart grid, customer intelligence, and high-load API security."
+	title={title}
+	description={description}
 	navKey="projects"
+	jsonLd={[webPageSchema({ site, title, description, url: canonicalHref })]}
 >
 	<h1 class="page-title">Projects</h1>
 	<div class="cards">

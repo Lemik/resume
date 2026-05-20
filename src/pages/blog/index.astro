@@ -3,16 +3,35 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPostListItem from '../../components/BlogPostListItem.astro';
 import { getCollection } from 'astro:content';
 import { publishedBlogPosts } from '../../utils/blog';
+import { collectionPageBlogSchema } from '../../utils/structured-data';
 
 const posts = publishedBlogPosts(await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+const site = Astro.site;
+if (!site) {
+	throw new Error('Configure `site` in `astro.config.mjs` so canonical URLs and JSON-LD resolve.');
+}
+
+const blogIndexDescription =
+	'Articles and notes on test automation, AI-assisted testing, performance, reliability, security, and delivery.';
+const canonicalHref = new URL(Astro.url.pathname, site).href;
 ---
 
 <BaseLayout
 	title="Blog — Leonid Dushin"
-	description="Articles and notes on test automation, performance, and delivery."
+	description={blogIndexDescription}
 	navKey="blog"
+	jsonLd={[
+		collectionPageBlogSchema({
+			site,
+			canonicalHref,
+			description: blogIndexDescription,
+			posts,
+			title: 'Blog — Leonid Dushin',
+		}),
+	]}
 >
 	<h1 class="page-title">Blog</h1>
 
