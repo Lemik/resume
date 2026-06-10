@@ -81,6 +81,14 @@ const twitterCard = ogImageAbsolute ? 'summary_large_image' : 'summary';
 				}
 			})();
 		</script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-QSX7G7P2KZ"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-QSX7G7P2KZ');
+		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="robots" content={robots} />
